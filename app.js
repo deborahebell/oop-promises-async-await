@@ -1,75 +1,128 @@
-//object oriented programming
+// const dog = {
+//     name: "Light",
+//     goodBoy: true
+// };
 
-const dog = {
-    name: "Light",
-    goodBoy: true
-    gender: "girl"
 
-};
+// const dogTwo = {
+//     name: 'Rusty'
+//     dogColor: 'golden'
+// };
 
-const dogTwo ={
-    name: 'Rusty'
-    color: 'golden'
-};
+// dogTwo._proto_ = dog;
 
-dogTwo._proto_ = dog;
+// console.log(dog);
+// console.log(dogTwo);
 
-console.log(dog);
-console.log(dogTwo);
+// console.log(dogTwo.goodBoy);
+// console.log(dogTwo.name);
 
-console.log(dogTwo.goodBoy);
-console.log(dogTwo.name);
+// //Make two objects and one object should inherit from the other
 
-//Make two objects and one object should inherit from the other
+// const designer = {
+//     name: "Kanye"
+//     desType: "fashion"
+//     color: "black"
+// };
 
-const designer = {
-    name: "Kanye"
-    desType: "fashion"
-    color: "black"
-};
+// const designerTwo = {
+//     name: "Virgil"
+//     age: "35"
+// };
 
-const designerTwo = {
-    name: "Virgil"
-    age: "35"
-};
+// designerTwo._proto_ = designer;
 
-designerTwo._proto_ = designer;
+// console.log(designer);
+// console.log(designerTwo);
+// console.log(designerTwo.desType);
+// console.log(designerTwo.color);
 
-console.log(designer);
-console.log(designerTwo);
-console.log(designerTwo.desType);
-console.log(designerTwo.color);
+// //Constructor Functions
 
-//Constructor Functions
+// let stacy = new user('stacy')
+// let lizzie = new user('lizzie')
 
-let stacy = new user('stacy')
-let lizzie = new user('lizzie')
+// //new-user is optional name for the function
 
-//new-user is optional name for the function
+// console.log(stacy.name);
+// console.log(izzie.name);
 
-console.log(stacy.name);
-console.log(izzie.name);
+// function bodyParts(name, action, location) {
+//     this.name = name;
+//     this.action = action;
+//     this.location = location;
+//         this.intro = function(){
+//         console.log("Please take care of your" + this.name + "!")
+//     };
+//     //return this
+// };
 
-function bodyParts(name, action, location) {
-    this.name = name;
-    this.action = action;
-    this.location = location;
+// let ankles = new bodyParts('tibia', 'walk','distal');
+// let arms = new bodyParts('ulna','lift', 'proximal');
+// let torso = new bodyParts('abdomen','stabilize','medial')
 
-    //return this
-};
+// console.log(ankles);
+// console.log(ankles.name);
 
-let ankles = new bodyParts('tibia', 'walk','distal');
-console.log(ankles);
-console.log(ankles.name);
+// console.log(arms)
+// console.log(arms.name)
 
-let arms = new bodyParts('ulna','lift', 'proximal');
-let torso = new bodyParts('abdomen','stabilize','medial')
+// console.log(torso)
+// console.log(torso.name)
 
-console.log(arms)
-console.log(arms.name)
+// // make a constructor function
+// // make 3 new variables with that constructor function
 
-console.log(torso)
-console.log(torso.name)
+class GithubProfile {
+    constructor(username,name,url){
+        this.username = username;
+        this.name = name;
+        this.url = url;
+    }
+    intro() {
+        console.log(`My name is ${this.name} and  my username is @${this.username}`);
+    }
+}
+fetch('https://api.github.com/users/deborahebell')
+.then(response => {
+    return response.json();
 
-// make a constructor function
-// make 3 new variables with that constructor function
+})
+.then(data => {
+    console.log(data);
+    let githubURL = data.url;
+    console.log(githubURL);
+    let githubUsername = data.login;
+    console.log(githubUsername);
+    let githubName = data.name;
+    
+
+    let deb = new GithubProfile(githubUsername, githubName,githubURL);
+    console.log(deb);
+
+    deb.intro();
+
+});
+
+var isMomHappy = true;
+
+// Promise
+var willIGetNewPhone = new Promise(
+    function (resolve, reject) {
+        if (isMomHappy) {
+            let phone = {
+                brand: 'Samsung',
+                color: 'black'
+            };
+            resolve(phone); // fulfilled
+        } else {
+            var reason = new Error('mom is not happy');
+            reject(reason); // reject
+        }
+
+    }
+);
+
+willIGetNewPhone.then(result => {
+    console.log(result);
+})
